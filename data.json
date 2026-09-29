@@ -1,0 +1,197 @@
+{
+  "streamers": [
+    {
+      "name": "megarush51",
+      "image": "https://unavatar.io/twitch/megarush51",
+      "questions": [
+        {
+          "q": "Какой ник указан у стримера?",
+          "answers": [
+            "megarush51",
+            "m4ga",
+            "mmr9i9",
+            "j05k1y"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "На какой платформе можно найти стримера?",
+          "answers": [
+            "Twitch",
+            "Steam",
+            "GitHub",
+            "Discord"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Это тестовый вопрос — его можно изменить в админке.",
+          "answers": [
+            "Вариант 1",
+            "Вариант 2",
+            "Вариант 3",
+            "Вариант 4"
+          ],
+          "correct": 0
+        }
+      ]
+    },
+    {
+      "name": "mmr9i9",
+      "image": "https://unavatar.io/twitch/mmr9i9",
+      "questions": [
+        {
+          "q": "Какой ник указан у стримера?",
+          "answers": [
+            "mmr9i9",
+            "m4ga",
+            "del1ght",
+            "emilshe1nru"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Это тестовый вопрос — его можно изменить в админке.",
+          "answers": [
+            "Вариант 1",
+            "Вариант 2",
+            "Вариант 3",
+            "Вариант 4"
+          ],
+          "correct": 0
+        }
+      ]
+    },
+    {
+      "name": "m4ga",
+      "image": "https://unavatar.io/twitch/m4ga",
+      "questions": [
+        {
+          "q": "Какой ник указан у стримера?",
+          "answers": [
+            "m4ga",
+            "realykekss",
+            "j05k1y",
+            "mmr9i9"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Это тестовый вопрос — его можно изменить в админке.",
+          "answers": [
+            "Вариант 1",
+            "Вариант 2",
+            "Вариант 3",
+            "Вариант 4"
+          ],
+          "correct": 0
+        }
+      ]
+    },
+    {
+      "name": "realykekss",
+      "image": "https://unavatar.io/twitch/realykekss",
+      "questions": [
+        {
+          "q": "Какой ник указан у стримера?",
+          "answers": [
+            "realykekss",
+            "m4ga",
+            "del1ght",
+            "j05k1y"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Это тестовый вопрос — его можно изменить в админке.",
+          "answers": [
+            "Вариант 1",
+            "Вариант 2",
+            "Вариант 3",
+            "Вариант 4"
+          ],
+          "correct": 0
+        }
+      ]
+    },
+    {
+      "name": "emilshe1nru",
+      "image": "https://unavatar.io/twitch/emilshe1nru",
+      "questions": [
+        {
+          "q": "Какой ник указан у стримера?",
+          "answers": [
+            "emilshe1nru",
+            "mmr9i9",
+            "m4ga",
+            "del1ght"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Это тестовый вопрос — его можно изменить в админке.",
+          "answers": [
+            "Вариант 1",
+            "Вариант 2",
+            "Вариант 3",
+            "Вариант 4"
+          ],
+          "correct": 0
+        }
+      ]
+    },
+    {
+      "name": "j05k1y",
+      "image": "https://unavatar.io/twitch/j05k1y",
+      "questions": [
+        {
+          "q": "Какой ник указан у стримера?",
+          "answers": [
+            "j05k1y",
+            "del1ght",
+            "m4ga",
+            "mmr9i9"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Это тестовый вопрос — его можно изменить в админке.",
+          "answers": [
+            "Вариант 1",
+            "Вариант 2",
+            "Вариант 3",
+            "Вариант 4"
+          ],
+          "correct": 0
+        }
+      ]
+    },
+    {
+      "name": "del1ght",
+      "image": "https://unavatar.io/twitch/del1ght",
+      "questions": [
+        {
+          "q": "Какой ник указан у стримера?",
+          "answers": [
+            "del1ght",
+            "j05k1y",
+            "realykekss",
+            "m4ga"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Это тестовый вопрос — его можно изменить в админке.",
+          "answers": [
+            "Вариант 1",
+            "Вариант 2",
+            "Вариант 3",
+            "Вариант 4"
+          ],
+          "correct": 0
+        }
+      ]
+    }
+  ],
+  "users": {}
+}

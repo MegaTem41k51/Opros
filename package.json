@@ -1,0 +1,14 @@
+{
+  "name": "blitz-streamer-quiz",
+  "version": "1.0.0",
+  "private": true,
+  "description": "БЛИЦ — тестовый сайт с анонимной статистикой и админ-редактором",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "cookie-parser": "^1.4.7",
+    "express": "^5.1.0"
+  }
+}

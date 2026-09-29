@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>БЛИЦ — Streamer Quiz</title><link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header><div class="logo">БЛИЦ</div><div class="user">ID: <b id="uid">...</b></div></header>
+<main>
+<section id="home">
+  <div class="hero"><span class="pill">STREAMER QUIZ</span><h1>Угадай стримера</h1><p>Выбери стримера и проверь, насколько хорошо ты его знаешь.</p></div>
+  <div id="cards" class="grid"></div>
+</section>
+<section id="quiz" class="hidden">
+  <button class="back" onclick="goHome()">← К стримерам</button>
+  <div class="quiz-head"><img id="quizImg"><div><div class="muted" id="quizName"></div><h2 id="question"></h2></div></div>
+  <div id="answers" class="answers"></div>
+  <div class="progress"><span id="progress"></span></div>
+</section>
+<section id="result" class="hidden">
+  <div class="result"><div class="big" id="score"></div><h2>Готово!</h2><p id="resultText"></p><button onclick="goHome()">Вернуться к стримерам</button></div>
+</section>
+</main>
+<script src="app.js"></script>
+</body>
+</html>

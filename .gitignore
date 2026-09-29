@@ -1,0 +1,4 @@
+node_modules/
+ADMIN_ID.txt
+*.log
+.DS_Store
