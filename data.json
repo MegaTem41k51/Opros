@@ -4,6 +4,27 @@
     {
       "name": "megarush51",
       "image": "https://unavatar.io/twitch/megarush51",
+      "active": false,
+      "resultMedia": {
+        "audio": {
+          "url": "/uploads/b72b2516c938c76772fb28b5947b.mp3",
+          "start": 0,
+          "end": 60,
+          "enabled": true
+        },
+        "photos": [
+          "/uploads/9b48732f709daea57bf55838de1a.jpg",
+          "/uploads/82e56d4fbe2d68b55ab1f4d0112a.jpg",
+          "/uploads/186385031ce7d8abf4fa64422193.jpg",
+          "/uploads/a5fc02bfcb144eb1ed531df41738.jpg",
+          "/uploads/1b4e2fce0862427f1c4a92381ebe.jpg",
+          "/uploads/8a8cd33d63eb45ec643f6cd2b441.jpg",
+          "/uploads/c3be62731673160a1219855674af.jpg",
+          "/uploads/30fcd4ce855d1bab8d0b495e1b26.jpg",
+          "/uploads/7b9a392bf7f1f0e145f6d55c5f44.jpg",
+          "/uploads/5cea4a6aabfaa5b7770a5bcc3e3c.jpg"
+        ]
+      },
       "questions": [
         {
           "q": "В каком году MegaRush51 начал стримить на Twitch?",
@@ -13,7 +34,7 @@
             "05.02.2018",
             "07.06.2016"
           ],
-          "correct": 0
+          "correct": 1
         },
         {
           "q": "Что делал Алик до стримов на Twitch?",
@@ -23,7 +44,7 @@
             "Снимал мувики на YouTube",
             "Стримы на YouTube с прокачками"
           ],
-          "correct": 0
+          "correct": 2
         },
         {
           "q": "Кто Алик по национальности?",
@@ -63,7 +84,7 @@
             "Ярославль",
             "Нижний Новгород"
           ],
-          "correct": 2
+          "correct": 1
         },
         {
           "q": "Какой у Алика самый заносной сайт?",
@@ -73,7 +94,7 @@
             "Jabka",
             "MusorDrop"
           ],
-          "correct": 0
+          "correct": 3
         },
         {
           "q": "С кем Алик открыл свой сайт по покупке/продаже скинов?",
@@ -83,7 +104,7 @@
             "m4ga",
             "emilshe1nru"
           ],
-          "correct": 0
+          "correct": 1
         },
         {
           "q": "Какой у Алика сквад на твиче?",
@@ -93,7 +114,7 @@
             "OLD SKILL SQUAD",
             "89 Squad"
           ],
-          "correct": 1
+          "correct": 2
         },
         {
           "q": "Какой у Алика автомобиль?",
@@ -103,11 +124,14 @@
             "Mercedes-Benz G-Класс AMG II",
             "Bmw M4 G82"
           ],
-          "correct": 0
+          "correct": 3
         }
-      ],
-      "active": true,
-      "facts": [],
+      ]
+    },
+    {
+      "name": "mmr9i9",
+      "image": "https://unavatar.io/twitch/mmr9i9",
+      "active": false,
       "resultMedia": {
         "audio": {
           "url": "",
@@ -116,11 +140,7 @@
           "enabled": false
         },
         "photos": []
-      }
-    },
-    {
-      "name": "mmr9i9",
-      "image": "https://unavatar.io/twitch/mmr9i9",
+      },
       "questions": [
         {
           "q": "Какой статус Twitch у mmr9i9?",
@@ -222,9 +242,12 @@
           ],
           "correct": 0
         }
-      ],
-      "active": true,
-      "facts": [],
+      ]
+    },
+    {
+      "name": "m4ga",
+      "image": "https://unavatar.io/twitch/m4ga",
+      "active": false,
       "resultMedia": {
         "audio": {
           "url": "",
@@ -233,11 +256,7 @@
           "enabled": false
         },
         "photos": []
-      }
-    },
-    {
-      "name": "m4ga",
-      "image": "https://unavatar.io/twitch/m4ga",
+      },
       "questions": [
         {
           "q": "Как реально зовут m4ga?",
@@ -267,7 +286,7 @@
             "Июнь 2026 год",
             "Апрель 2026 год"
           ],
-          "correct": 0
+          "correct": 3
         },
         {
           "q": "Сколько рост у Маги?",
@@ -307,7 +326,7 @@
             "25",
             "28"
           ],
-          "correct": 0
+          "correct": 2
         },
         {
           "q": "Когда у Маги ДР?",
@@ -317,7 +336,7 @@
             "7 июля 1998 года",
             "6 августа 2001 года"
           ],
-          "correct": 0
+          "correct": 3
         },
         {
           "q": "В какой последней команде Мага играл турниры?",
@@ -327,7 +346,7 @@
             "Team By_Owl",
             "SNAILKICK Team"
           ],
-          "correct": 3
+          "correct": 0
         },
         {
           "q": "Сколько часов у Маги в CS2?",
@@ -339,9 +358,12 @@
           ],
           "correct": 0
         }
-      ],
-      "active": true,
-      "facts": [],
+      ]
+    },
+    {
+      "name": "realykekss",
+      "image": "https://unavatar.io/twitch/realykekss",
+      "active": false,
       "resultMedia": {
         "audio": {
           "url": "",
@@ -350,11 +372,7 @@
           "enabled": false
         },
         "photos": []
-      }
-    },
-    {
-      "name": "realykekss",
-      "image": "https://unavatar.io/twitch/realykekss",
+      },
       "questions": [
         {
           "q": "Какой статус Twitch указан у RealyKekss?",
@@ -456,9 +474,12 @@
           ],
           "correct": 0
         }
-      ],
-      "active": true,
-      "facts": [],
+      ]
+    },
+    {
+      "name": "emilshe1nru",
+      "image": "https://unavatar.io/twitch/emilshe1nru",
+      "active": false,
       "resultMedia": {
         "audio": {
           "url": "",
@@ -467,11 +488,7 @@
           "enabled": false
         },
         "photos": []
-      }
-    },
-    {
-      "name": "emilshe1nru",
-      "image": "https://unavatar.io/twitch/emilshe1nru",
+      },
       "questions": [
         {
           "q": "Какой точный ник указан у канала?",
@@ -573,126 +590,12 @@
           ],
           "correct": 0
         }
-      ],
-      "active": true,
-      "facts": [],
-      "resultMedia": {
-        "audio": {
-          "url": "",
-          "start": 0,
-          "end": 0,
-          "enabled": false
-        },
-        "photos": []
-      }
+      ]
     },
     {
       "name": "j05k1y",
       "image": "https://unavatar.io/twitch/j05k1y",
-      "questions": [
-        {
-          "q": "Какой ник у второго канала, который прямо указан в описании j05k1y?",
-          "answers": [
-            "joskiyokda",
-            "realykekss",
-            "megarush51",
-            "m4ga"
-          ],
-          "correct": 0
-        },
-        {
-          "q": "Какая фраза стоит в описании j05k1y на TwitchMetrics?",
-          "answers": [
-            "«зайди и дам подарок»",
-            "«НОЧНЫЕ ПРОКАЧКИ ВАМ!»",
-            "«ДРАГОН ЛОР»",
-            "«Настройки CS2»"
-          ],
-          "correct": 0
-        },
-        {
-          "q": "Какая игра указана у j05k1y в свежих эфирах?",
-          "answers": [
-            "Counter-Strike",
-            "Just Chatting",
-            "Dota 2",
-            "Minecraft"
-          ],
-          "correct": 0
-        },
-        {
-          "q": "Когда TwitchMetrics указывает начало стриминга j05k1y?",
-          "answers": [
-            "19 апреля 2025",
-            "21 ноября 2024",
-            "9 июня 2014",
-            "17 октября 2016"
-          ],
-          "correct": 0
-        },
-        {
-          "q": "Сколько подписчиков показывала TwitchMetrics в июле 2026?",
-          "answers": [
-            "43 598",
-            "16 778",
-            "6 166",
-            "280 500"
-          ],
-          "correct": 0
-        },
-        {
-          "q": "Какой пик зрителей был указан за тот период?",
-          "answers": [
-            "1 558",
-            "998",
-            "811",
-            "4 287"
-          ],
-          "correct": 0
-        },
-        {
-          "q": "Какой средний онлайн был указан за тот период?",
-          "answers": [
-            "777",
-            "444",
-            "160",
-            "1 515"
-          ],
-          "correct": 0
-        },
-        {
-          "q": "Кого j05k1y отмечал в свежих заголовках вместе с собой?",
-          "answers": [
-            "megarush51 и realykekss",
-            "только m4ga",
-            "только mmr9i9",
-            "только del1ght"
-          ],
-          "correct": 0
-        },
-        {
-          "q": "Какой пик зрителей StreamerVitals зафиксировал 24 сентября 2026 года?",
-          "answers": [
-            "1 950",
-            "1 558",
-            "998",
-            "4 287"
-          ],
-          "correct": 0
-        },
-        {
-          "q": "Какой процент отслеженного времени за последние 30 дней пришёлся на Counter-Strike?",
-          "answers": [
-            "100%",
-            "75%",
-            "50%",
-            "25%"
-          ],
-          "correct": 0
-        }
-      ],
-      "active": true,
-      "facts": [],
+      "active": false,
       "resultMedia": {
         "audio": {
           "url": "",
@@ -701,11 +604,123 @@
           "enabled": false
         },
         "photos": []
-      }
+      },
+      "questions": [
+        {
+          "q": "Как зовут животных Дани?",
+          "answers": [
+            "Юта, Пуля, Вегас ",
+            "Пуля, Снежинка, Персик ",
+            "Блинчик, Юта, Умка",
+            "Кнопка, Вегас, Юта"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Как назывались два скина у Данька? ",
+          "answers": [
+            "Кроха и карапуз  ",
+            "Арбуз и дыня",
+            "Вупсень и пупсень ",
+            "Кузнечик и саранча"
+          ],
+          "correct": 2
+        },
+        {
+          "q": "В какой цвет красился Даня?",
+          "answers": [
+            "Черный",
+            "Рыжий ",
+            "Белый",
+            "Красный"
+          ],
+          "correct": 2
+        },
+        {
+          "q": "Как Даня сделал предложение Саше? ",
+          "answers": [
+            "Романтический вечер дома",
+            "В ресторане ",
+            "Отдыхая на природе",
+            "Лёжа на кровати "
+          ],
+          "correct": 3
+        },
+        {
+          "q": "Куда Данек летал отдыхать? ",
+          "answers": [
+            "Дальше Мурино не выходил",
+            " В Геленджик",
+            "На Мальдивы ",
+            "В Санкт-Петербург"
+          ],
+          "correct": 2
+        },
+        {
+          "q": "Какая у него машина?",
+          "answers": [
+            "Lamborghini Huracan",
+            "BWM X3M",
+            "Нива Бронто ",
+            "Lamborghini Urus"
+          ],
+          "correct": 1
+        },
+        {
+          "q": "Что из этого является правдой?",
+          "answers": [
+            "Ел резиновой моти ",
+            "Выкинул роллы за 600 рублей ",
+            "Обосрался в первом классе",
+            "Всё правильно"
+          ],
+          "correct": 3
+        },
+        {
+          "q": "Какая рубрика была раньше на Ютубе у Данька?",
+          "answers": [
+            "Скин на прокачку ",
+            "Битва за скин",
+            "Скин за скилл ",
+            "Проверка на скилл"
+          ],
+          "correct": 2
+        },
+        {
+          "q": "Любимая карта в напарниках у Данька?",
+          "answers": [
+            "Dust",
+            "  Inferno ",
+            " Cobblestone",
+            "  Nuke"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Самая популярная кличка Данька?",
+          "answers": [
+            "Рыжий",
+            "Добби",
+            "Воздухан ",
+            "Карлик"
+          ],
+          "correct": 1
+        }
+      ]
     },
     {
       "name": "del1ght",
       "image": "https://unavatar.io/twitch/del1ght",
+      "active": false,
+      "resultMedia": {
+        "audio": {
+          "url": "",
+          "start": 0,
+          "end": 0,
+          "enabled": false
+        },
+        "photos": []
+      },
       "questions": [
         {
           "q": "Какой статус Twitch у del1ght?",
@@ -807,18 +822,7 @@
           ],
           "correct": 0
         }
-      ],
-      "active": true,
-      "facts": [],
-      "resultMedia": {
-        "audio": {
-          "url": "",
-          "start": 0,
-          "end": 0,
-          "enabled": false
-        },
-        "photos": []
-      }
+      ]
     }
   ],
   "sessions": {}
