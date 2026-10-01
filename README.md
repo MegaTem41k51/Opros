@@ -1,6 +1,6 @@
 # БЛИЦ — вход через Twitch OAuth
 
-Кнопка «войти через Twitch» открывает официальный Twitch OAuth. Пользователь не вводит Twitch ID: после успешного входа сервер получает Twitch user ID и login и сам создаёт/находит аккаунт БЛИЦ.
+Кнопка «Войти через Twitch» открывает официальный Twitch OAuth. Пользователь не вводит Twitch ID: после успешного входа сервер получает Twitch user ID и login и сам создаёт/находит аккаунт БЛИЦ.
 
 > Twitch официально использует endpoint `https://id.twitch.tv/oauth2/authorize` для OAuth-авторизации. URL `https://auth.twitch.tv/authorize` не является документированным endpoint для этого flow. citeturn0search0
 
