@@ -25,24 +25,46 @@ function deleteQuestion(qi){if(state.streamers[currentEditor].questions.length<=
 async function saveEditor(){const i=currentEditor,s=state.streamers[i],qs=[...document.querySelectorAll('#m-questions .qCard')].map(el=>({q:el.querySelector('[data-q]').value,answers:[...el.querySelectorAll('[data-a]')].map(x=>x.value),correct:Number(el.querySelector('[data-c]').value)}));const photos=[...document.querySelectorAll('[data-photo]')].map(x=>x.value.trim()).filter(Boolean);if(photos.length>0&&photos.length<10)return alert('Для галереи нужно минимум 10 фотографий.');if(photos.length>20)return alert('Максимум 20 фотографий.');const audioUrl=$('m-audio-url').value.trim(),start=Math.max(0,Number($('m-audio-start').value)||0),end=Math.max(0,Number($('m-audio-end').value)||0);if(end>0&&end<=start)return alert('Время окончания должно быть больше времени начала.');try{await api(`/api/admin/streamers/${i}`,{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:$('m-name').value,image:$('m-image').value,addedAt:$('m-added').value,active:$('m-active').checked,questions:qs,resultMedia:{audio:{url:audioUrl,start,end,enabled:$('m-audio-enabled').checked&&!!audioUrl},photos}})});state=await api('/api/admin');closeEditor();render()}catch(e){alert(e.message)}}
 function closeEditor(){currentEditor=null;$('modal').classList.add('hidden')}
 function esc(s){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
+let statEditorDirty=false;
+function statEscVal(v){return esc(v==null?'':v)}
+function statRecordHtml(r={},idx=0){
+  const skins=Array.isArray(r.skins)?r.skins.slice(0,10):[];
+  return `<div class="statRecord" data-stat-record>
+    <div class="statRecordHead"><div><span>ЗАПИСЬ ${String(idx+1).padStart(2,'0')}</span><b>Данные игрока</b></div><button type="button" class="removeStatRecord" onclick="removeStatRecord(this)">Удалить</button></div>
+    <div class="statRecordGrid">
+      <label>Имя игрока<input data-stat-name value="${statEscVal(r.name)}" placeholder="Имя"></label>
+      <label>ТВИЧ НИК<input data-stat-twitch value="${statEscVal(r.twitch)}" placeholder="twitch_nick"></label>
+      <label>САЙТ<input data-stat-site value="${statEscVal(r.site)}" placeholder="https://..."></label>
+      <label>СУММА ДЕПОЗИТА<input data-stat-deposit inputmode="decimal" value="${statEscVal(r.deposit||'0')}" placeholder="0"></label>
+      <label>СУММА ВЫВОДА<input data-stat-withdraw inputmode="decimal" value="${statEscVal(r.withdraw||'0')}" placeholder="0"></label>
+    </div>
+    <div class="skinsEditor"><div class="skinsEditorHead"><div><span>СКИНЫ</span><b>До 10 скинов за запись</b></div><strong class="skinCounter">${skins.length}/10</strong></div><div class="skinRows">${skins.map((x,i)=>skinRowHtml(x,i)).join('')}</div><button type="button" class="addSkinBtn" onclick="addSkin(this)">+ Добавить скин</button></div>
+  </div>`
+}
+function skinRowHtml(x={},i=0){return `<div class="skinRow"><span>${String(i+1).padStart(2,'0')}</span><input data-skin-name value="${statEscVal(x.name)}" placeholder="Название скина"><input data-skin-price inputmode="decimal" value="${statEscVal(x.price||'0')}" placeholder="Цена"><button type="button" onclick="removeSkin(this)">×</button></div>`}
 function renderStatEditor(){
   const box=$('statEditor');if(!box)return;
   const streams=state.streamers||[];
   const oldStreamer=$('statStreamer')?.value||'0';
-  const oldDate=$('statDate')?.value||'';
-  const oldJson=$('statJson')?.value;
-  const currentDate=oldDate||'2026-10-01';
+  const oldDate=$('statDate')?.value||'2026-10-01';
+  const currentDate=oldDate;
   box.innerHTML=`<div class="adminStatEditor">
-    <div class="statEditorTop"><div><span>STREAMER STATS</span><h3>Запись статистики по дням</h3><p>Выбери стримера и конкретное число в календаре. Доступны даты с октября 2026 по декабрь 2027.</p></div><div class="selectedDateBadge" id="selectedDateBadge">Дата: ${formatStatDate(currentDate)}</div></div>
+    <div class="statEditorTop"><div><span>STREAMER STATS</span><h3>Вписывание статистики</h3><p>Выбери стримера и дату. Ниже заполняются отдельные записи: ТВИЧ НИК, САЙТ, депозит, вывод и до 10 скинов.</p></div><div class="selectedDateBadge" id="selectedDateBadge">Дата: ${formatStatDate(currentDate)}</div></div>
     <div class="adminStatControls">
-      <label>Стример<select id="statStreamer" onchange="onStatStreamerChange()">${streams.map((st,i)=>`<option value="${i}" ${String(i)===String(oldStreamer)?'selected':''}>${esc(st.name)}</option>`).join('')}</select></label>
+      <label>СТРИМЕР<select id="statStreamer" onchange="onStatStreamerChange()">${streams.map((st,i)=>`<option value="${i}" ${String(i)===String(oldStreamer)?'selected':''}>${esc(st.name)}</option>`).join('')}</select></label>
       <div class="calendarPickerWrap"><div class="calendarPickerHead"><button type="button" onclick="changeStatMonth(-1)">‹</button><strong id="statMonthTitle"></strong><button type="button" onclick="changeStatMonth(1)">›</button></div><div class="calendarWeekSmall"><span>ПН</span><span>ВТ</span><span>СР</span><span>ЧТ</span><span>ПТ</span><span>СБ</span><span>ВС</span></div><div id="statCalendar" class="calendarPickerGrid"></div></div>
     </div>
-    <input id="statDate" type="hidden" value="${esc(currentDate)}">
-    <div class="statDayEditor"><div class="statDayTitle"><div><span>ВЫБРАННЫЙ ДЕНЬ</span><b id="statDayTitle">${formatStatDate(currentDate)}</b></div><button type="button" onclick="loadStatDay()">Загрузить данные</button></div><textarea id="statJson" spellcheck="false" placeholder='[ { "name": "Имя", "twitch": "https://twitch.tv/...", "deposit": 0, "withdraw": 0, "skins": [] } ]'>${oldJson!==undefined?esc(oldJson):'[]'}</textarea><div class="adminStatButtons"><button type="button" onclick="saveStatDay()">Сохранить день</button><button type="button" class="dangerBtn" onclick="clearStatDay()">Очистить день</button></div></div>
+    <input id="statDate" type="hidden" value="${statEscVal(currentDate)}">
+    <div class="statDayEditor">
+      <div class="statDayTitle"><div><span>ВЫБРАННЫЙ ДЕНЬ</span><b id="statDayTitle">${formatStatDate(currentDate)}</b></div><div class="statDayActions"><button type="button" onclick="loadStatDay()">Загрузить данные</button><button type="button" class="addRecordBtn" onclick="addStatRecord()">+ Добавить запись</button></div></div>
+      <div id="statRecords" class="statRecords"></div>
+      <div class="adminStatButtons"><button type="button" onclick="saveStatDay()">Сохранить день</button><button type="button" class="dangerBtn" onclick="clearStatDay()">Очистить день</button></div>
+    </div>
   </div>`;
-  if(!oldJson) loadStatDay();
+  statEditorDirty=false;
+  loadStatDay();
   renderStatCalendar(currentDate);
+  const editor=$('statEditor');editor?.addEventListener('input',()=>{statEditorDirty=true},{once:false});
 }
 function parseStatDate(v){const [y,m,d]=String(v||'2026-10-01').split('-').map(Number);return new Date(Date.UTC(y,m-1,d||1))}
 function formatStatDate(v){const d=parseStatDate(v);return d.toLocaleDateString('ru-RU',{day:'2-digit',month:'2-digit',year:'numeric',timeZone:'UTC'})}
@@ -64,7 +86,7 @@ function renderStatCalendar(selected){
     const date=`${statCalendarMonth.y}-${String(statCalendarMonth.m+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
     const has=Array.isArray(data[date])&&data[date].length>0;
     const active=date===selected;
-    html+=`<button type="button" class="statCalDay ${has?'hasData':''} ${active?'selected':''}" onclick="selectStatDate('${date}')"><b>${day}</b>${has?`<small>${data[date].length} зап.`:''}</button>`;
+    html+=`<button type="button" class="statCalDay ${has?'hasData':''} ${active?'selected':''}" onclick="selectStatDate('${date}')"><b>${day}</b>${has?`<small>${data[date].length} зап.</small>`:''}</button>`;
   }
   el.innerHTML=html;
   const prevDisabled=statCalendarMonth.y===min.y&&statCalendarMonth.m===min.m;
@@ -72,13 +94,21 @@ function renderStatCalendar(selected){
   const buttons=document.querySelectorAll('.calendarPickerHead button');if(buttons.length===2){buttons[0].disabled=prevDisabled;buttons[1].disabled=nextDisabled}
 }
 function changeStatMonth(delta){let y=statCalendarMonth.y,m=statCalendarMonth.m+delta;if(m<0){m=11;y--}if(m>11){m=0;y++}const key=`${y}-${String(m+1).padStart(2,'0')}-01`;const min='2026-10-01',max='2027-12-01';if(key<min||key>max)return;statCalendarMonth={y,m};renderStatCalendar($('statDate').value||key)}
-function selectStatDate(date){$('statDate').value=date;$('statDayTitle').textContent=formatStatDate(date);$('selectedDateBadge').textContent='Дата: '+formatStatDate(date);loadStatDay();renderStatCalendar(date)}
-function onStatStreamerChange(){const date=$('statDate').value||'2026-10-01';renderStatCalendar(date);loadStatDay()}
+function selectStatDate(date){if(statEditorDirty&&!confirm('Есть несохранённые изменения. Перейти на другую дату без сохранения?'))return;$('statDate').value=date;$('statDayTitle').textContent=formatStatDate(date);$('selectedDateBadge').textContent='Дата: '+formatStatDate(date);statEditorDirty=false;loadStatDay();renderStatCalendar(date)}
+function onStatStreamerChange(){if(statEditorDirty&&!confirm('Есть несохранённые изменения. Сменить стримера без сохранения?'))return;statEditorDirty=false;const date=$('statDate').value||'2026-10-01';renderStatCalendar(date);loadStatDay()}
 function getStatData(){const i=Number($('statStreamer').value);return state.statistics?.[String(i)]||{}}
-function loadStatDay(){const date=$('statDate').value;if(!date)return;const data=getStatData();$('statJson').value=JSON.stringify(data[date]||[],null,2);if($('statDayTitle'))$('statDayTitle').textContent=formatStatDate(date);if($('selectedDateBadge'))$('selectedDateBadge').textContent='Дата: '+formatStatDate(date)}
-async function saveStatDay(){const i=Number($('statStreamer').value),date=$('statDate').value;if(!date)return alert('Выбери дату');let rows;try{rows=JSON.parse($('statJson').value||'[]');if(!Array.isArray(rows))throw new Error()}catch{return alert('JSON должен быть массивом записей []')}for(const r of rows){if(!r.name&&!r.twitch)continue;if(!Array.isArray(r.skins))r.skins=[];r.skins=r.skins.slice(0,10)}try{await api('/api/admin/statistics/'+i,{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify({date,records:rows})});state=await api('/api/admin');render();alert('Статистика сохранена')}catch(e){alert(e.message)}}
-function clearStatDay(){if(!$('statDate').value)return;$('statJson').value='[]'}
-load();setInterval(async()=>{if(currentEditor!==null)return;try{state=await api('/api/admin');render()}catch{}},5000);
+function renderStatRecords(rows){const box=$('statRecords');if(!box)return;box.innerHTML=(Array.isArray(rows)?rows:[]).map((r,i)=>statRecordHtml(r,i)).join('')||'<div class="emptyStatRecords">За выбранную дату записей нет. Нажми «+ Добавить запись».</div>';updateStatRecordUi()}
+function loadStatDay(){const date=$('statDate').value;if(!date)return;const data=getStatData();renderStatRecords(data[date]||[]);if($('statDayTitle'))$('statDayTitle').textContent=formatStatDate(date);if($('selectedDateBadge'))$('selectedDateBadge').textContent='Дата: '+formatStatDate(date);statEditorDirty=false}
+function addStatRecord(){const box=$('statRecords');if(!box)return;const empty=box.querySelector('.emptyStatRecords');if(empty)empty.remove();const count=box.querySelectorAll('[data-stat-record]').length;if(count>=50)return alert('Максимум 50 записей за день.');box.insertAdjacentHTML('beforeend',statRecordHtml({name:'',twitch:'',site:'',deposit:'0',withdraw:'0',skins:[]},count));statEditorDirty=true;updateStatRecordUi()}
+function removeStatRecord(btn){btn.closest('[data-stat-record]')?.remove();statEditorDirty=true;updateStatRecordUi()}
+function addSkin(btn){const card=btn.closest('[data-stat-record]');if(!card)return;const rows=card.querySelector('.skinRows');const count=rows.querySelectorAll('.skinRow').length;if(count>=10)return alert('Максимум 10 скинов в одной записи.');rows.insertAdjacentHTML('beforeend',skinRowHtml({},count));statEditorDirty=true;updateStatRecordUi()}
+function removeSkin(btn){btn.closest('.skinRow')?.remove();statEditorDirty=true;updateStatRecordUi()}
+function updateStatRecordUi(){document.querySelectorAll('[data-stat-record]').forEach(card=>{const n=card.querySelectorAll('.skinRow').length;const c=card.querySelector('.skinCounter');if(c)c.textContent=n+'/10';[...card.querySelectorAll('.skinRow')].forEach((r,i)=>{const s=r.querySelector('span');if(s)s.textContent=String(i+1).padStart(2,'0')})})}
+function collectStatRows(){return [...document.querySelectorAll('[data-stat-record]')].map(card=>({name:card.querySelector('[data-stat-name]')?.value.trim()||'',twitch:card.querySelector('[data-stat-twitch]')?.value.trim()||'',site:card.querySelector('[data-stat-site]')?.value.trim()||'',deposit:card.querySelector('[data-stat-deposit]')?.value.trim()||'0',withdraw:card.querySelector('[data-stat-withdraw]')?.value.trim()||'0',skins:[...card.querySelectorAll('.skinRow')].slice(0,10).map(row=>({name:row.querySelector('[data-skin-name]')?.value.trim()||'',price:row.querySelector('[data-skin-price]')?.value.trim()||'0'})).filter(x=>x.name||x.price!=='0')})).filter(r=>r.name||r.twitch||r.site||r.deposit!=='0'||r.withdraw!=='0'||r.skins.length)}
+async function saveStatDay(){const i=Number($('statStreamer').value),date=$('statDate').value;if(!date)return alert('Выбери дату');const rows=collectStatRows();try{await api('/api/admin/statistics/'+i,{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify({date,records:rows})});state=await api('/api/admin');statEditorDirty=false;render();alert('Статистика сохранена')}catch(e){alert(e.message)}}
+function clearStatDay(){if(!confirm('Очистить статистику за выбранный день?'))return;renderStatRecords([]);statEditorDirty=true}
+
+load();setInterval(async()=>{if(currentEditor!==null||statEditorDirty||document.querySelector('#statEditor :focus'))return;try{state=await api('/api/admin');render()}catch{}},5000);
 async function resetStats(id){if(!confirm('Сбросить всю статистику ID '+id+'?'))return;try{await api('/api/admin/reset/'+id,{method:'POST'});state=await api('/api/admin');render()}catch(e){alert(e.message)}}
 async function banUser(id){if(!confirm('Забанить ID '+id+'?'))return;try{await api('/api/admin/ban/'+id,{method:'POST'});state=await api('/api/admin');render()}catch(e){alert(e.message)}}
 async function changeId(oldId){const v=prompt('Новый ID для пользователя '+oldId+' (0–100000):');if(v===null)return;const newId=Number(v);if(!Number.isInteger(newId))return alert('Неверный ID');try{await api('/api/admin/change-id',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({oldId,newId})});state=await api('/api/admin');render()}catch(e){alert(e.message)}}

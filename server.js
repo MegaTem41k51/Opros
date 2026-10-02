@@ -220,7 +220,7 @@ app.put('/api/admin/statistics/:index',(req,res)=>{
   const date=String(req.body?.date||'');
   if(!/^(2026-(10|11|12)-\d{2}|2027-(0[1-9]|1[0-2])-\d{2})$/.test(date)) return res.status(400).json({error:'Дата должна быть в диапазоне 10.2026–12.2027'});
   const rows=Array.isArray(req.body?.records)?req.body.records.slice(0,50).map(r=>({
-    name:String(r?.name||''), twitch:String(r?.twitch||''), deposit:String(r?.deposit||'0'), withdraw:String(r?.withdraw||'0'),
+    name:String(r?.name||''), twitch:String(r?.twitch||''), site:String(r?.site||''), deposit:String(r?.deposit||'0'), withdraw:String(r?.withdraw||'0'),
     skins:Array.isArray(r?.skins)?r.skins.slice(0,10).map(x=>({name:String(x?.name||''),price:String(x?.price||'0')})):[]
   })).filter(r=>r.name||r.twitch||r.deposit!=='0'||r.withdraw!=='0'||r.skins.length):[];
   d.statistics[String(i)]??={};
