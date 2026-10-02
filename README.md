@@ -21,3 +21,7 @@
 Без `DATABASE_URL` приложение продолжает работать с локальным `persistent-data`, но на Free Render это не является постоянным хранилищем: локальные изменения теряются при spin-down/restart/redeploy.
 
 Free Render Web Service может уснуть после 15 минут без входящих запросов. При следующем запросе он запускается снова. Render отдельно указывает, что локальная файловая система Free Web Service очищается при spin-down/restart/redeploy, поэтому для сохранения данных нужен внешний datastore вроде Postgres. 
+
+
+### Важно для постоянных техработ
+Переключатель «Сайт включён» сохраняется в отдельной таблице `blitz_site_settings` Postgres. На Free Render обязательно должна быть задана переменная `DATABASE_URL` с Internal Database URL. Без Postgres Free Render не может гарантировать сохранение переключателя после перезапуска/spin-down.

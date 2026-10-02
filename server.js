@@ -57,9 +57,12 @@ async function initDatabase(){
   }
   await dbPool.query(`CREATE TABLE IF NOT EXISTS blitz_state (id INTEGER PRIMARY KEY, payload JSONB NOT NULL, updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW())`);
   await dbPool.query(`CREATE TABLE IF NOT EXISTS blitz_media (id TEXT PRIMARY KEY, content_type TEXT NOT NULL, original_name TEXT, data BYTEA NOT NULL, created_at TIMESTAMPTZ NOT NULL DEFAULT NOW())`);
+  await dbPool.query(`CREATE TABLE IF NOT EXISTS blitz_site_settings (id INTEGER PRIMARY KEY, enabled BOOLEAN NOT NULL, updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW())`);
   const r=await dbPool.query('SELECT payload FROM blitz_state WHERE id=1');
   if(r.rows[0]?.payload){
     DATA_CACHE=normalizeData(r.rows[0].payload);
+    const sr=await dbPool.query('SELECT enabled FROM blitz_site_settings WHERE id=1');
+    if(sr.rows[0] && typeof sr.rows[0].enabled==='boolean') DATA_CACHE.site.enabled=sr.rows[0].enabled;
     fs.writeFileSync(DATA_FILE,JSON.stringify(DATA_CACHE,null,2),'utf8');
   }else{
     let seed={users:{},sessions:{},votes:{},site:{enabled:true},voting:{enabled:true,title:'Голосование',streamerIndices:[]},streamers:[]};
@@ -67,6 +70,10 @@ async function initDatabase(){
     DATA_CACHE=normalizeData(seed);
     await dbPool.query('INSERT INTO blitz_state(id,payload) VALUES(1,$1::jsonb)',[JSON.stringify(DATA_CACHE)]);
   }
+  await dbPool.query(`INSERT INTO blitz_site_settings(id,enabled) VALUES(1,$1) ON CONFLICT(id) DO NOTHING`,[DATA_CACHE.site.enabled!==false]);
+  const sr2=await dbPool.query('SELECT enabled FROM blitz_site_settings WHERE id=1');
+  if(sr2.rows[0] && typeof sr2.rows[0].enabled==='boolean') DATA_CACHE.site.enabled=sr2.rows[0].enabled;
+  fs.writeFileSync(DATA_FILE,JSON.stringify(DATA_CACHE,null,2),'utf8');
   console.log('Postgres persistence: подключено');
 }
 
@@ -75,7 +82,10 @@ function queuePersist(data){
   try{fs.writeFileSync(DATA_FILE,JSON.stringify(DATA_CACHE,null,2),'utf8')}catch{}
   if(!dbPool)return Promise.resolve();
   const payload=JSON.stringify(DATA_CACHE);
-  dbWriteChain=dbWriteChain.then(()=>dbPool.query('UPDATE blitz_state SET payload=$1::jsonb, updated_at=NOW() WHERE id=1',[payload]));
+  dbWriteChain=dbWriteChain.then(async()=>{
+    await dbPool.query('INSERT INTO blitz_state(id,payload) VALUES(1,$1::jsonb) ON CONFLICT(id) DO UPDATE SET payload=EXCLUDED.payload,updated_at=NOW()',[payload]);
+    await dbPool.query('INSERT INTO blitz_site_settings(id,enabled) VALUES(1,$1) ON CONFLICT(id) DO UPDATE SET enabled=EXCLUDED.enabled,updated_at=NOW()',[DATA_CACHE.site.enabled!==false]);
+  }).catch(err=>{console.error('Ошибка сохранения в Postgres:',err);throw err});
   return dbWriteChain;
 }
 
@@ -197,7 +207,7 @@ app.post('/api/admin/upload/photos',uploadAdminGuard,mediaUpload.array('photos',
 
 app.get('/api/admin',(req,res)=>{const x=requireAdmin(req,res);if(!x)return;const {d}=x;res.json({settings:{siteEnabled:d.site.enabled!==false,votingEnabled:d.voting.enabled!==false,votingTitle:d.voting.title||'Голосование',votingStreamerIndices:d.voting.streamerIndices||[]},streamers:d.streamers.map((s,index)=>({...s,index})),users:Object.values(d.users).map(normalizeUser).filter(u=>!u.admin).map(publicUser),admins:Object.values(d.users).map(normalizeUser).filter(u=>u.admin).map(publicUser),global:aggregateStats(d),statistics:d.statistics,masterRoute:ADMIN_ROUTE})});
 app.get('/api/admin/backup',(req,res)=>{const x=requireAdmin(req,res);if(!x)return;const d=readData();const stamp=new Date().toISOString().replace(/[:.]/g,'-');res.set('Content-Type','application/json; charset=utf-8');res.set('Content-Disposition',`attachment; filename="blitz-data-backup-${stamp}.json"`);res.set('Cache-Control','no-store');res.send(JSON.stringify(d,null,2))});
-app.put('/api/admin/settings',(req,res)=>{const x=requireAdmin(req,res);if(!x)return;const d=x.d,b=req.body||{};if(typeof b.siteEnabled==='boolean')d.site.enabled=b.siteEnabled;if(typeof b.votingEnabled==='boolean')d.voting.enabled=b.votingEnabled;if(typeof b.votingTitle==='string'&&b.votingTitle.trim())d.voting.title=b.votingTitle.trim();if(Array.isArray(b.votingStreamerIndices))d.voting.streamerIndices=[...new Set(b.votingStreamerIndices.map(Number).filter(i=>Number.isInteger(i)&&i>=0&&i<d.streamers.length))];writeData(d);res.json({ok:true,settings:{siteEnabled:d.site.enabled!==false,votingEnabled:d.voting.enabled!==false,votingTitle:d.voting.title,votingStreamerIndices:d.voting.streamerIndices}})});
+app.put('/api/admin/settings',async(req,res)=>{const x=requireAdmin(req,res);if(!x)return;const d=x.d,b=req.body||{};if(typeof b.siteEnabled==='boolean')d.site.enabled=b.siteEnabled;if(typeof b.votingEnabled==='boolean')d.voting.enabled=b.votingEnabled;if(typeof b.votingTitle==='string'&&b.votingTitle.trim())d.voting.title=b.votingTitle.trim();if(Array.isArray(b.votingStreamerIndices))d.voting.streamerIndices=[...new Set(b.votingStreamerIndices.map(Number).filter(i=>Number.isInteger(i)&&i>=0&&i<d.streamers.length))];try{await writeData(d);if(dbPool)await dbPool.query('INSERT INTO blitz_site_settings(id,enabled) VALUES(1,$1) ON CONFLICT(id) DO UPDATE SET enabled=EXCLUDED.enabled,updated_at=NOW()',[d.site.enabled!==false]);res.json({ok:true,settings:{siteEnabled:d.site.enabled!==false,votingEnabled:d.voting.enabled!==false,votingTitle:d.voting.title,votingStreamerIndices:d.voting.streamerIndices},persistence:!!dbPool})}catch(e){res.status(500).json({error:'Не удалось сохранить настройки: '+e.message})}});
 app.post('/api/admin/reset-votes',(req,res)=>{const x=requireAdmin(req,res);if(!x)return;const d=x.d;d.votes={};writeData(d);res.json({ok:true})});
 
 app.put('/api/admin/streamers/:index',(req,res)=>{const x=requireAdmin(req,res);if(!x)return;const {d}=x,i=Number(req.params.index);if(!d.streamers[i])return res.status(404).json({error:'Не найдено'});const old=d.streamers[i],b=req.body||{};const media=b.resultMedia&&typeof b.resultMedia==='object'?b.resultMedia:old.resultMedia||{};
