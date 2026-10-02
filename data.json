@@ -1,0 +1,910 @@
+{
+  "users": {},
+  "streamers": [
+    {
+      "name": "megarush51",
+      "image": "https://unavatar.io/twitch/megarush51",
+      "active": false,
+      "resultMedia": {
+        "audio": {
+          "url": "/uploads/b72b2516c938c76772fb28b5947b.mp3",
+          "start": 0,
+          "end": 60,
+          "enabled": true
+        },
+        "photos": [
+          "/uploads/75b49b72ba0e389cf58d190e1938.jpg",
+          "/uploads/9487ca1ef84d1d5f765b8cfc6826.jpg",
+          "/uploads/7a1ca736c4984b5a29d0cb298314.jpg",
+          "/uploads/10326bb34062cca1249f3219bea2.jpg",
+          "/uploads/572b3eb7880ac86b04bcddde1359.jpg",
+          "/uploads/4fc2bbb0c3c8d7ea8569d26d1c65.jpg",
+          "/uploads/1b3bd7771dff09cf46f46d39a306.jpg",
+          "/uploads/53acd91ed4a321fade39bfd2d362.jpg",
+          "/uploads/577388f2fcd73729281720a41270.jpg",
+          "/uploads/55e6e8f68dad7c7ac94f0450fed8.jpg",
+          "/uploads/24af7c7aac27f34906ffe33a5528.jpg",
+          "/uploads/b88f28310cbd73b223b0604c8217.jpg",
+          "/uploads/ea1b48b4c9bf4ed474d3a9a93e55.jpg"
+        ]
+      },
+      "questions": [
+        {
+          "q": "В каком году MegaRush51 начал стримить на Twitch?",
+          "answers": [
+            "22.11.2017",
+            "17.10.2016",
+            "05.02.2018",
+            "07.06.2016"
+          ],
+          "correct": 1
+        },
+        {
+          "q": "Что делал Алик до стримов на Twitch?",
+          "answers": [
+            "Курил кальян и продавал шаурму",
+            "Играл фейсит и стримил на YouTube",
+            "Снимал мувики на YouTube",
+            "Стримы на YouTube с прокачками"
+          ],
+          "correct": 2
+        },
+        {
+          "q": "Кто Алик по национальности?",
+          "answers": [
+            "Азербайджанец",
+            "Цыган",
+            "Дагестанец",
+            "Немец"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Что Алик делает на твиче?",
+          "answers": [
+            "Мегапрокачки",
+            "Играет в Minecraft",
+            "IRL-путешествия",
+            "Смотрит фильмы"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Где Алик стримит чаще всего?",
+          "answers": [
+            "Дома",
+            "Игровая резиденция ResSpase",
+            "На улице",
+            "Дома у друзей"
+          ],
+          "correct": 1
+        },
+        {
+          "q": "В каком городе родился Алик?",
+          "answers": [
+            "Санкт-Петербург",
+            "Мурманск",
+            "Ярославль",
+            "Нижний Новгород"
+          ],
+          "correct": 1
+        },
+        {
+          "q": "Какой у Алика самый заносной сайт?",
+          "answers": [
+            "DinoDrop",
+            "SkinHouse",
+            "Jabka",
+            "MusorDrop"
+          ],
+          "correct": 3
+        },
+        {
+          "q": "С кем Алик открыл свой сайт по покупке/продаже скинов?",
+          "answers": [
+            "realykekss",
+            "j05k1y",
+            "m4ga",
+            "emilshe1nru"
+          ],
+          "correct": 1
+        },
+        {
+          "q": "Какой у Алика сквад на твиче?",
+          "answers": [
+            "Freak Squad",
+            "MEGA SQUAD",
+            "OLD SKILL SQUAD",
+            "89 Squad"
+          ],
+          "correct": 2
+        },
+        {
+          "q": "Какой у Алика автомобиль?",
+          "answers": [
+            "Bmw M5 G90",
+            "AUDI Q5",
+            "Mercedes-Benz G-Класс AMG II",
+            "Bmw M4 G82"
+          ],
+          "correct": 3
+        }
+      ]
+    },
+    {
+      "name": "mmr9i9",
+      "image": "https://unavatar.io/twitch/mmr9i9",
+      "active": false,
+      "resultMedia": {
+        "audio": {
+          "url": "",
+          "start": 0,
+          "end": 0,
+          "enabled": false
+        },
+        "photos": [
+          "/uploads/bdb00f6fc82883831c8d105e9f4d.png",
+          "/uploads/3deb88fc8c7780bdd029e68baff7.png",
+          "/uploads/f5ea3c0c7ee93ab89ca2c81937c9.jpg",
+          "/uploads/1d33d4a42511ce858f272231dee5.jpg",
+          "/uploads/ef80eddfd0f8657ce4fa9ed0c2b8.jpg",
+          "/uploads/de2553609b4e3930266ce730db6f.jpg",
+          "/uploads/4a2900ac125c5824743395e89a98.jpg",
+          "/uploads/bac86de7497e40a39d134a770e43.png",
+          "/uploads/7efb46e7cb7c0313f3516725dfbc.png",
+          "/uploads/3a036a56ee2c29bc07de4133891a.png"
+        ]
+      },
+      "questions": [
+        {
+          "q": "Какой статус Twitch у mmr9i9?",
+          "answers": [
+            "Affiliate",
+            "Partner",
+            "Verified only",
+            "Нет статуса"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Какой язык указан у mmr9i9?",
+          "answers": [
+            "Русский",
+            "Английский",
+            "Польский",
+            "Немецкий"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Какая категория стоит у его последних стримов?",
+          "answers": [
+            "Counter-Strike",
+            "Just Chatting",
+            "Minecraft",
+            "Dota 2"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Что прямо вынесено в названия нескольких его эфиров?",
+          "answers": [
+            "Баттлы и прокачки",
+            "FACEIT 3500 ELO",
+            "Старые сериалы",
+            "Настройки NVIDIA"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Сколько примерно часов эфиров mmr9i9 было указано за последние 30 дней в Streams Charts?",
+          "answers": [
+            "65 часов",
+            "20 часов",
+            "42 часа",
+            "90 часов"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Какой пик зрителей за 30 дней был указан в Streams Charts?",
+          "answers": [
+            "941",
+            "1 558",
+            "4 287",
+            "998"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Сколько подписчиков показывала страница mmr9i9 в Streams Charts при проверке?",
+          "answers": [
+            "6 166",
+            "16 778",
+            "43 598",
+            "280 500"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Какой ник из списка является точным написанием канала?",
+          "answers": [
+            "mmr9i9",
+            "mmr9l9",
+            "mmr99i",
+            "mmr9i"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "В какой части дня обычно начинались многие его эфиры по расписанию Streams Charts?",
+          "answers": [
+            "Днём, примерно с 14:30–15:00",
+            "Ранним утром",
+            "После полуночи",
+            "Только вечером после 22:00"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Какой из вариантов лучше всего описывает тематику его последних названий?",
+          "answers": [
+            "CS2 + инвентари + баттлы",
+            "IRL + путешествия",
+            "Музыка + караоке",
+            "Minecraft + выживание"
+          ],
+          "correct": 0
+        }
+      ]
+    },
+    {
+      "name": "m4ga",
+      "image": "https://unavatar.io/twitch/m4ga",
+      "active": false,
+      "resultMedia": {
+        "audio": {
+          "url": "",
+          "start": 0,
+          "end": 0,
+          "enabled": false
+        },
+        "photos": [
+          "/uploads/7365256fe7b0fb9abf77bca08891.jpg",
+          "/uploads/f0c395dd16d3fc59470dbb33d10e.jpg",
+          "/uploads/a833ab652ca65ee794b9116aacaf.jpg",
+          "/uploads/1b22984afa11cce437cebca7f43e.jpg",
+          "/uploads/7a6fb63cb955cf07dc542ef8fe77.jpg",
+          "/uploads/62516313f63d0bcb2010901a8d41.jpg",
+          "/uploads/1c80bec2229c1520c3f33b31837b.jpg",
+          "/uploads/77523c33a2f352bd57c40dc1ef2f.jpg",
+          "/uploads/2a46b86d9fe21994c13a24cbedb0.jpg",
+          "/uploads/3ae107682ede58a7b2e234fa2ce8.jpg",
+          "/uploads/4b989d3d7cc3e9f8f3ee95a53828.png",
+          "/uploads/ba38e4812a3a4e00068c91234d9e.png"
+        ]
+      },
+      "questions": [
+        {
+          "q": "Как реально зовут m4ga?",
+          "answers": [
+            "Ваня",
+            "Максим",
+            "Магомед",
+            "Даниил"
+          ],
+          "correct": 2
+        },
+        {
+          "q": "Сколько ELO у Маги?",
+          "answers": [
+            "2987",
+            "2598",
+            "3204",
+            "3032"
+          ],
+          "correct": 3
+        },
+        {
+          "q": "Когда Мага начал делать прокачки?",
+          "answers": [
+            "Ноябрь 2025 год",
+            "Январь 2025 год",
+            "Июнь 2026 год",
+            "Апрель 2026 год"
+          ],
+          "correct": 3
+        },
+        {
+          "q": "Сколько рост у Маги?",
+          "answers": [
+            "1.92",
+            "2.02",
+            "2.00",
+            "2.13"
+          ],
+          "correct": 1
+        },
+        {
+          "q": "Где Мага родился?",
+          "answers": [
+            "Москва",
+            "Казань",
+            "Санкт-Петербург",
+            "Махачкала"
+          ],
+          "correct": 3
+        },
+        {
+          "q": "Какой у Маги бренд?",
+          "answers": [
+            "Dexp",
+            "COVER ME",
+            "Logitech",
+            "Ardor Gaming"
+          ],
+          "correct": 1
+        },
+        {
+          "q": "Сколько Маге лет?",
+          "answers": [
+            "23",
+            "26",
+            "25",
+            "28"
+          ],
+          "correct": 2
+        },
+        {
+          "q": "Когда у Маги ДР?",
+          "answers": [
+            "2 ноября 2000 года",
+            "14 мая 2003 года",
+            "7 июля 1998 года",
+            "6 августа 2001 года"
+          ],
+          "correct": 3
+        },
+        {
+          "q": "В какой последней команде Мага играл турниры?",
+          "answers": [
+            "Team Shoke",
+            "Team Strogo",
+            "Team By_Owl",
+            "SNAILKICK Team"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Сколько часов у Маги в CS2?",
+          "answers": [
+            "14500",
+            "6590",
+            "23400",
+            "9770"
+          ],
+          "correct": 0
+        }
+      ]
+    },
+    {
+      "name": "realykekss",
+      "image": "https://unavatar.io/twitch/realykekss",
+      "active": false,
+      "resultMedia": {
+        "audio": {
+          "url": "",
+          "start": 0,
+          "end": 0,
+          "enabled": false
+        },
+        "photos": [
+          "/uploads/e2f9f417942ad5c91fa5415acd1f.jpg",
+          "/uploads/2ac4776154e295fcc0fd0d955d88.jpg",
+          "/uploads/aa80ebd8997a4f3fc92e526ba5ce.jpg",
+          "/uploads/8c7334e3b0177b425272111ca534.jpg",
+          "/uploads/b458d243797cbdc46a366ed55830.jpg",
+          "/uploads/fc8740b773eeea10e24e85d9ac17.jpg",
+          "/uploads/f42a3d4a1f95c30427ad1b51fbe7.jpg",
+          "/uploads/fe6c26ee3b2573f93fc0cd5d1c2d.jpg",
+          "/uploads/74abcd17bfe55f545cdf4a4f9ae1.jpg",
+          "/uploads/f89cab0493e92681680c8b4138b5.jpg",
+          "/uploads/e2fe4059567d7197677e124ef454.png"
+        ]
+      },
+      "questions": [
+        {
+          "q": "Какой статус Twitch указан у RealyKekss?",
+          "answers": [
+            "Partner",
+            "Affiliate",
+            "Без статуса",
+            "Только YouTube"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Какой язык канала указан в публичной статистике?",
+          "answers": [
+            "RU",
+            "EN",
+            "DE",
+            "ES"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Какая категория занимала 100% отслеженного эфирного времени за указанный период?",
+          "answers": [
+            "Counter-Strike",
+            "Just Chatting",
+            "Minecraft",
+            "Dota 2"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Как называется типичный заголовок его сентябрьских стримов?",
+          "answers": [
+            "«УЛЬТРА ПРОКАЧКИ! НЕВЕРОЯТНЫЕ СКИНЫ! ПОДАРКИ!»",
+            "«ФЕЙСИТ 3500 ЭЛО!»",
+            "«НОЧНЫЕ ПРОКАЧКИ ВАМ!»",
+            "«зайди и дам подарок»"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Какой ник регулярно появляется в свежих эфирах RealyKekss рядом с заголовком?",
+          "answers": [
+            "j05k1y",
+            "m4ga",
+            "mmr9i9",
+            "emilshe1nru"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Какой пик зрителей был зафиксирован StreamerVitals 7 сентября 2026 года?",
+          "answers": [
+            "998",
+            "1 950",
+            "4 287",
+            "811"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Сколько подписчиков показывала страница RealyKekss при проверке?",
+          "answers": [
+            "16.8K",
+            "6.1K",
+            "43.6K",
+            "280K"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "С какого месяца 2026 года StreamerVitals отслеживает RealyKekss?",
+          "answers": [
+            "Августа",
+            "Января",
+            "Мая",
+            "Ноября"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Какой средний онлайн был указан за последние 30 дней?",
+          "answers": [
+            "444",
+            "265",
+            "1 207",
+            "1 515"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Какой формат лучше всего соответствует найденной истории эфиров RealyKekss?",
+          "answers": [
+            "Регулярные CS-стримы с инвентарями и подарками",
+            "Только IRL",
+            "Только Just Chatting",
+            "Только соревновательные турниры"
+          ],
+          "correct": 0
+        }
+      ]
+    },
+    {
+      "name": "emilshe1nru",
+      "image": "https://unavatar.io/twitch/emilshe1nru",
+      "active": false,
+      "resultMedia": {
+        "audio": {
+          "url": "",
+          "start": 0,
+          "end": 0,
+          "enabled": false
+        },
+        "photos": [
+          "/uploads/23058ae4a81f2e90f0380396d5e8.jpg",
+          "/uploads/921409a6d6d719ae0259ef7de049.jpg",
+          "/uploads/621918023d82eaf2d19e725604a1.jpg",
+          "/uploads/5c7267826afc10efdb81cddda05b.jpg",
+          "/uploads/f43255133640c53af14bf8818a9b.jpg",
+          "/uploads/f5bb0ba60b58ebf6285748150367.jpg",
+          "/uploads/2f7e77f6c85ed3905e243d8b0f28.jpg",
+          "/uploads/ad3ad3d7125ac8c117d218bceb8c.jpg",
+          "/uploads/ebb747988049ec09ba769b495b7f.jpg",
+          "/uploads/0ea7829d0e8d343581bb15aa7e5b.jpg",
+          "/uploads/9e147819967c0371afb79cca636b.jpg"
+        ]
+      },
+      "questions": [
+        {
+          "q": "Какой точный ник указан у канала?",
+          "answers": [
+            "emilshe1nru",
+            "emilshe1n",
+            "emilsheinru",
+            "emilshe1ru"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Какая игра указана в найденных эфирах EmilShe1nru?",
+          "answers": [
+            "Counter-Strike",
+            "Minecraft",
+            "Dota 2",
+            "Fortnite"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Какой формат встречается в названии канала?",
+          "answers": [
+            "«НОЧНЫЕ ПРОКАЧКИ ВАМ!»",
+            "«зайди и дам подарок»",
+            "«ДРАГОН ЛОР»",
+            "«Настройки CS2»"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Какую цель по FACEIT прямо указывали названия его эфиров?",
+          "answers": [
+            "3500 ELO",
+            "2000 ELO",
+            "2500 ELO",
+            "4000 ELO"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Какой язык указан у канала?",
+          "answers": [
+            "Русский",
+            "Английский",
+            "Украинский",
+            "Немецкий"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Когда TwitchMetrics указывает начало стриминга EmilShe1nru?",
+          "answers": [
+            "21 ноября 2024",
+            "19 апреля 2025",
+            "9 июня 2014",
+            "17 октября 2016"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Какое количество подписчиков показывала страница TwitchMetrics при проверке?",
+          "answers": [
+            "16 778",
+            "43 598",
+            "6 166",
+            "280 500"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Какой средний онлайн был указан за июнь-июль 2026 в TwitchMetrics?",
+          "answers": [
+            "160",
+            "777",
+            "265",
+            "2 586"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Какой пик зрителей был указан за тот же период?",
+          "answers": [
+            "811",
+            "1 950",
+            "4 287",
+            "998"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Что объединяет найденные стримы EmilShe1nru?",
+          "answers": [
+            "Counter-Strike и соревновательная игра",
+            "Только Just Chatting",
+            "Только Minecraft",
+            "Музыкальные выступления"
+          ],
+          "correct": 0
+        }
+      ]
+    },
+    {
+      "name": "j05k1y",
+      "image": "https://unavatar.io/twitch/j05k1y",
+      "active": false,
+      "resultMedia": {
+        "audio": {
+          "url": "",
+          "start": 0,
+          "end": 0,
+          "enabled": false
+        },
+        "photos": [
+          "/uploads/32380282338879ccf0d75a93ca2b.jpg",
+          "/uploads/c65f9fd7dbcaa293ae60457115b5.jpg",
+          "/uploads/3246563cc3fed4956f2e03c13a73.jpg",
+          "/uploads/3c4fbdb0ebcdae7070ea816bcf8f.jpg",
+          "/uploads/539eb3619784372d19da623bd77b.jpg",
+          "/uploads/8b80268c8fd41ee12b40dfe3f93f.jpg",
+          "/uploads/8ae828145f662e21698c453d0934.jpg",
+          "/uploads/3fa69e65858d82480d8b6be84d23.jpg",
+          "/uploads/104e1dd86f4ca299a8b7194065ff.jpg",
+          "/uploads/31fddf134009e4b8304b5fe38dc5.jpg",
+          "/uploads/402cf88aa3cd4d8eb50484536b47.jpg",
+          "/uploads/f22dd58fe315e65c29d7e5379ce1.jpg",
+          "/uploads/a42420cfbe88f89f9538f184e91b.jpg",
+          "/uploads/2f2ee0ca2fed6637f22690be9f7c.jpg",
+          "/uploads/86a3a0030aed39c619fdcc37845e.jpg",
+          "/uploads/a97f4288263cada0f80faef992bb.jpg",
+          "/uploads/86c95862057453810d1811980d34.jpg"
+        ]
+      },
+      "questions": [
+        {
+          "q": "Как зовут животных Дани?",
+          "answers": [
+            "Юта, Пуля, Вегас ",
+            "Пуля, Снежинка, Персик ",
+            "Блинчик, Юта, Умка",
+            "Кнопка, Вегас, Юта"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Как назывались два скина у Данька? ",
+          "answers": [
+            "Кроха и карапуз  ",
+            "Арбуз и дыня",
+            "Вупсень и пупсень ",
+            "Кузнечик и саранча"
+          ],
+          "correct": 2
+        },
+        {
+          "q": "В какой цвет красился Даня?",
+          "answers": [
+            "Черный",
+            "Рыжий ",
+            "Белый",
+            "Красный"
+          ],
+          "correct": 2
+        },
+        {
+          "q": "Как Даня сделал предложение Саше? ",
+          "answers": [
+            "Романтический вечер дома",
+            "В ресторане ",
+            "Отдыхая на природе",
+            "Лёжа на кровати "
+          ],
+          "correct": 3
+        },
+        {
+          "q": "Куда Данек летал отдыхать? ",
+          "answers": [
+            "Дальше Мурино не выходил",
+            " В Геленджик",
+            "На Мальдивы ",
+            "В Санкт-Петербург"
+          ],
+          "correct": 2
+        },
+        {
+          "q": "Какая у него машина?",
+          "answers": [
+            "Lamborghini Huracan",
+            "BWM X3M",
+            "Нива Бронто ",
+            "Lamborghini Urus"
+          ],
+          "correct": 1
+        },
+        {
+          "q": "Что из этого является правдой?",
+          "answers": [
+            "Ел резиновой моти ",
+            "Выкинул роллы за 600 рублей ",
+            "Обосрался в первом классе",
+            "Всё правильно"
+          ],
+          "correct": 3
+        },
+        {
+          "q": "Какая рубрика была раньше на Ютубе у Данька?",
+          "answers": [
+            "Скин на прокачку ",
+            "Битва за скин",
+            "Скин за скилл ",
+            "Проверка на скилл"
+          ],
+          "correct": 2
+        },
+        {
+          "q": "Любимая карта в напарниках у Данька?",
+          "answers": [
+            "Dust",
+            "  Inferno ",
+            " Cobblestone",
+            "  Nuke"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Самая популярная кличка Данька?",
+          "answers": [
+            "Рыжий",
+            "Добби",
+            "Воздухан ",
+            "Карлик"
+          ],
+          "correct": 1
+        }
+      ]
+    },
+    {
+      "name": "del1ght",
+      "image": "https://unavatar.io/twitch/del1ght",
+      "active": false,
+      "resultMedia": {
+        "audio": {
+          "url": "",
+          "start": 0,
+          "end": 0,
+          "enabled": false
+        },
+        "photos": [
+          "/uploads/b28394dab4b696ff987fa5ad3d13.jpg",
+          "/uploads/c05e45579ceb3f27a6302f79c52f.jpg",
+          "/uploads/fc7ec65211d2474bf4e0335a8409.jpg",
+          "/uploads/d7dd558a23ff15eb8497f6915d51.jpg",
+          "/uploads/2a8e99a329c2e1d9975ea085f481.jpg",
+          "/uploads/139f4f9c4107a381f14cfa00ffd1.jpg",
+          "/uploads/5a39fcfe3845b30a6bb5fac8f33e.jpg",
+          "/uploads/b1424c87812d5f98e2424e74cb83.jpg",
+          "/uploads/9a2dd55eba638e2899bed2f53fc7.jpg",
+          "/uploads/74a7f93a326ed1e3e2998792135e.png",
+          "/uploads/b5b53945b4be777ee9062af4eb95.png"
+        ]
+      },
+      "questions": [
+        {
+          "q": "Какой статус Twitch у del1ght?",
+          "answers": [
+            "Partner",
+            "Affiliate",
+            "Без статуса",
+            "Только YouTube"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Что del1ght пишет о Counter-Strike в описании канала?",
+          "answers": [
+            "Что очень любит игру",
+            "Что больше не играет",
+            "Что играет только иногда",
+            "Что никогда не запускал"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "В каком году TwitchMetrics указывает начало стриминга del1ght?",
+          "answers": [
+            "2014",
+            "2016",
+            "2020",
+            "2024"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Какой ник у стримера, который фигурирует в одном из топовых VOD вместе с del1ght и j05k1y?",
+          "answers": [
+            "megarush51",
+            "m4ga",
+            "mmr9i9",
+            "emilshe1nru"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Какой заголовок характерен для свежих эфиров del1ght?",
+          "answers": [
+            "«ПРОКАЧКА ИНВЕНТАРЕЙ на 10.000-20.000 + ТЕСТ САЙТОВ!»",
+            "«ФЕЙСИТ 3500 ЭЛО!»",
+            "«зайди и дам подарок»",
+            "«ДРАГОН ЛОР»"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Какая игра указана у этих свежих эфиров?",
+          "answers": [
+            "Counter-Strike",
+            "Minecraft",
+            "Dota 2",
+            "Just Chatting"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Как называется один из самых просматриваемых клипов del1ght?",
+          "answers": [
+            "«Почему Дел не играет FACEIT»",
+            "«ДРАГОН ЛОР»",
+            "«зайди и дам подарок»",
+            "«НОЧНЫЕ ПРОКАЧКИ ВАМ!»"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Какая тема есть ещё в популярных клипах del1ght?",
+          "answers": [
+            "Настройки CS2",
+            "Кулинария",
+            "Музыка",
+            "Путешествия"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Сколько подписчиков показывала TwitchMetrics при проверке?",
+          "answers": [
+            "583 547",
+            "280 500",
+            "43 598",
+            "16 778"
+          ],
+          "correct": 0
+        },
+        {
+          "q": "Какой язык указан у канала del1ght?",
+          "answers": [
+            "Русский",
+            "Английский",
+            "Украинский",
+            "Немецкий"
+          ],
+          "correct": 0
+        }
+      ]
+    }
+  ],
+  "sessions": {}
+}
