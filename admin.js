@@ -26,11 +26,58 @@ async function saveEditor(){const i=currentEditor,s=state.streamers[i],qs=[...do
 function closeEditor(){currentEditor=null;$('modal').classList.add('hidden')}
 function esc(s){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
 function renderStatEditor(){
-  const box=$('statEditor');if(!box)return;const streams=state.streamers||[];box.innerHTML=`<div class="adminStatEditor"><h3>Запись за день</h3><p>Выбери стримера и дату. В JSON можно указать несколько имён за один день. Каждый объект: name, twitch, deposit, withdraw, skins (максимум 10).</p><div class="adminStatControls"><label>Стример<select id="statStreamer">${streams.map((s,i)=>`<option value="${i}">${esc(s.name)}</option>`).join('')}</select></label><label>Дата<input id="statDate" type="date" min="2026-10-01" max="2027-12-31"></label></div><textarea id="statJson" spellcheck="false">[]</textarea><div class="adminStatButtons"><button onclick="loadStatDay()">Загрузить день</button><button onclick="saveStatDay()">Сохранить день</button><button onclick="clearStatDay()">Очистить день</button></div></div>`;}
+  const box=$('statEditor');if(!box)return;
+  const streams=state.streamers||[];
+  const oldStreamer=$('statStreamer')?.value||'0';
+  const oldDate=$('statDate')?.value||'';
+  const oldJson=$('statJson')?.value;
+  const currentDate=oldDate||'2026-10-01';
+  box.innerHTML=`<div class="adminStatEditor">
+    <div class="statEditorTop"><div><span>STREAMER STATS</span><h3>Запись статистики по дням</h3><p>Выбери стримера и конкретное число в календаре. Доступны даты с октября 2026 по декабрь 2027.</p></div><div class="selectedDateBadge" id="selectedDateBadge">Дата: ${formatStatDate(currentDate)}</div></div>
+    <div class="adminStatControls">
+      <label>Стример<select id="statStreamer" onchange="onStatStreamerChange()">${streams.map((st,i)=>`<option value="${i}" ${String(i)===String(oldStreamer)?'selected':''}>${esc(st.name)}</option>`).join('')}</select></label>
+      <div class="calendarPickerWrap"><div class="calendarPickerHead"><button type="button" onclick="changeStatMonth(-1)">‹</button><strong id="statMonthTitle"></strong><button type="button" onclick="changeStatMonth(1)">›</button></div><div class="calendarWeekSmall"><span>ПН</span><span>ВТ</span><span>СР</span><span>ЧТ</span><span>ПТ</span><span>СБ</span><span>ВС</span></div><div id="statCalendar" class="calendarPickerGrid"></div></div>
+    </div>
+    <input id="statDate" type="hidden" value="${esc(currentDate)}">
+    <div class="statDayEditor"><div class="statDayTitle"><div><span>ВЫБРАННЫЙ ДЕНЬ</span><b id="statDayTitle">${formatStatDate(currentDate)}</b></div><button type="button" onclick="loadStatDay()">Загрузить данные</button></div><textarea id="statJson" spellcheck="false" placeholder='[ { "name": "Имя", "twitch": "https://twitch.tv/...", "deposit": 0, "withdraw": 0, "skins": [] } ]'>${oldJson!==undefined?esc(oldJson):'[]'}</textarea><div class="adminStatButtons"><button type="button" onclick="saveStatDay()">Сохранить день</button><button type="button" class="dangerBtn" onclick="clearStatDay()">Очистить день</button></div></div>
+  </div>`;
+  if(!oldJson) loadStatDay();
+  renderStatCalendar(currentDate);
+}
+function parseStatDate(v){const [y,m,d]=String(v||'2026-10-01').split('-').map(Number);return new Date(Date.UTC(y,m-1,d||1))}
+function formatStatDate(v){const d=parseStatDate(v);return d.toLocaleDateString('ru-RU',{day:'2-digit',month:'2-digit',year:'numeric',timeZone:'UTC'})}
+function statMonthKey(v){const d=parseStatDate(v);return {y:d.getUTCFullYear(),m:d.getUTCMonth()}}
+let statCalendarMonth={y:2026,m:9};
+function renderStatCalendar(selected){
+  const el=$('statCalendar'),title=$('statMonthTitle');if(!el||!title)return;
+  const sm=statMonthKey(selected);statCalendarMonth={y:sm.y,m:sm.m};
+  const min={y:2026,m:9},max={y:2027,m:11};
+  if(statCalendarMonth.y<min.y||(statCalendarMonth.y===min.y&&statCalendarMonth.m<min.m))statCalendarMonth={...min};
+  if(statCalendarMonth.y>max.y||(statCalendarMonth.y===max.y&&statCalendarMonth.m>max.m))statCalendarMonth={...max};
+  const first=new Date(Date.UTC(statCalendarMonth.y,statCalendarMonth.m,1));
+  const days=new Date(Date.UTC(statCalendarMonth.y,statCalendarMonth.m+1,0)).getUTCDate();
+  const offset=(first.getUTCDay()+6)%7;
+  title.textContent=first.toLocaleDateString('ru-RU',{month:'long',year:'numeric',timeZone:'UTC'}).replace(/^./,c=>c.toUpperCase());
+  let html='';for(let i=0;i<offset;i++)html+='<button type="button" class="statCalEmpty" tabindex="-1"></button>';
+  const data=getStatData();
+  for(let day=1;day<=days;day++){
+    const date=`${statCalendarMonth.y}-${String(statCalendarMonth.m+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
+    const has=Array.isArray(data[date])&&data[date].length>0;
+    const active=date===selected;
+    html+=`<button type="button" class="statCalDay ${has?'hasData':''} ${active?'selected':''}" onclick="selectStatDate('${date}')"><b>${day}</b>${has?`<small>${data[date].length} зап.`:''}</button>`;
+  }
+  el.innerHTML=html;
+  const prevDisabled=statCalendarMonth.y===min.y&&statCalendarMonth.m===min.m;
+  const nextDisabled=statCalendarMonth.y===max.y&&statCalendarMonth.m===max.m;
+  const buttons=document.querySelectorAll('.calendarPickerHead button');if(buttons.length===2){buttons[0].disabled=prevDisabled;buttons[1].disabled=nextDisabled}
+}
+function changeStatMonth(delta){let y=statCalendarMonth.y,m=statCalendarMonth.m+delta;if(m<0){m=11;y--}if(m>11){m=0;y++}const key=`${y}-${String(m+1).padStart(2,'0')}-01`;const min='2026-10-01',max='2027-12-01';if(key<min||key>max)return;statCalendarMonth={y,m};renderStatCalendar($('statDate').value||key)}
+function selectStatDate(date){$('statDate').value=date;$('statDayTitle').textContent=formatStatDate(date);$('selectedDateBadge').textContent='Дата: '+formatStatDate(date);loadStatDay();renderStatCalendar(date)}
+function onStatStreamerChange(){const date=$('statDate').value||'2026-10-01';renderStatCalendar(date);loadStatDay()}
 function getStatData(){const i=Number($('statStreamer').value);return state.statistics?.[String(i)]||{}}
-function loadStatDay(){const date=$('statDate').value;if(!date)return alert('Выбери дату');const data=getStatData();$('statJson').value=JSON.stringify(data[date]||[],null,2)}
+function loadStatDay(){const date=$('statDate').value;if(!date)return;const data=getStatData();$('statJson').value=JSON.stringify(data[date]||[],null,2);if($('statDayTitle'))$('statDayTitle').textContent=formatStatDate(date);if($('selectedDateBadge'))$('selectedDateBadge').textContent='Дата: '+formatStatDate(date)}
 async function saveStatDay(){const i=Number($('statStreamer').value),date=$('statDate').value;if(!date)return alert('Выбери дату');let rows;try{rows=JSON.parse($('statJson').value||'[]');if(!Array.isArray(rows))throw new Error()}catch{return alert('JSON должен быть массивом записей []')}for(const r of rows){if(!r.name&&!r.twitch)continue;if(!Array.isArray(r.skins))r.skins=[];r.skins=r.skins.slice(0,10)}try{await api('/api/admin/statistics/'+i,{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify({date,records:rows})});state=await api('/api/admin');render();alert('Статистика сохранена')}catch(e){alert(e.message)}}
-function clearStatDay(){if(!$('statDate').value)return alert('Выбери дату');$('statJson').value='[]'}
+function clearStatDay(){if(!$('statDate').value)return;$('statJson').value='[]'}
 load();setInterval(async()=>{if(currentEditor!==null)return;try{state=await api('/api/admin');render()}catch{}},5000);
 async function resetStats(id){if(!confirm('Сбросить всю статистику ID '+id+'?'))return;try{await api('/api/admin/reset/'+id,{method:'POST'});state=await api('/api/admin');render()}catch(e){alert(e.message)}}
 async function banUser(id){if(!confirm('Забанить ID '+id+'?'))return;try{await api('/api/admin/ban/'+id,{method:'POST'});state=await api('/api/admin');render()}catch(e){alert(e.message)}}
